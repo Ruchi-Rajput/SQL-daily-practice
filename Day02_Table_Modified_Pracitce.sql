@@ -12,3 +12,14 @@ alter table german_credit_risk rename column `Saving accounts` to Saving_Account
 alter table german_credit_risk rename column `Checking account` to Checking_Accounts;
 select * from german_credit_risk;
 desc german_credit_risk;
+
+alter table german_credit_risk add constraint pk_credit primary key (Cust_Num);
+
+alter table german_credit_risk modify cust_num int not null,
+	modify age int not null,
+    modify gender varchar(10) not null,
+    modify credit_amount int not null,
+    modify duration int not null,
+    modify risk varchar(10) not null;
+    
+alter table german_credit_risk add constraint chk_age check (Age between 18 and 100);
