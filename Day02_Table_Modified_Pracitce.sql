@@ -23,3 +23,18 @@ alter table german_credit_risk modify cust_num int not null,
     modify risk varchar(10) not null;
     
 alter table german_credit_risk add constraint chk_age check (Age between 18 and 100);
+
+
+-- 11-02-2026 Day03 of sql practice 
+alter table  german_credit_risk add constraint chk_credit check(credit_amount >0);
+select * from german_credit_risk;
+desc german_credit_risk;
+
+alter table  german_credit_risk  add constraint chk_duration check (Duration > 0);
+desc german_credit_risk;
+
+
+
+
+
+
