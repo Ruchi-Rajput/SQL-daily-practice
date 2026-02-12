@@ -34,7 +34,12 @@ alter table  german_credit_risk  add constraint chk_duration check (Duration > 0
 desc german_credit_risk;
 
 
+-- 12-02-2026 
+alter table german_credit_risk add constraint chk_gender check(gender in('male',
+'female'));
 
+alter table german_credit_risk add constraint chk_risk check(risk in('good','bad'));
+ 
 
 
 
