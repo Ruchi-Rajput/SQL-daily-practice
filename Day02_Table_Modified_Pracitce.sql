@@ -1,3 +1,5 @@
+-- 11-02-2026  Day-01
+
 use joins23;
 
 SELECT * FROM joins23.german_credit_risk;
@@ -25,7 +27,7 @@ alter table german_credit_risk modify cust_num int not null,
 alter table german_credit_risk add constraint chk_age check (Age between 18 and 100);
 
 
--- 11-02-2026 Day03 of sql practice 
+-- 12-02-2026   Day02 of sql practice 
 alter table  german_credit_risk add constraint chk_credit check(credit_amount >0);
 select * from german_credit_risk;
 desc german_credit_risk;
@@ -34,12 +36,19 @@ alter table  german_credit_risk  add constraint chk_duration check (Duration > 0
 desc german_credit_risk;
 
 
--- 12-02-2026 
 alter table german_credit_risk add constraint chk_gender check(gender in('male',
 'female'));
 
 alter table german_credit_risk add constraint chk_risk check(risk in('good','bad'));
+
  
+-- 13-02-2026 Modifing columns data-type  
+alter table german_credit_risk modify housing varchar(20);
+desc german_credit_risk;
 
+alter table  german_credit_risk modify Saving_Accounts varchar(20);
 
+alter table  german_credit_risk modify Checking_Accounts varchar(20);
 
+alter table german_credit_risk modify Purpose varchar(10);
+desc german_credit_risk;
