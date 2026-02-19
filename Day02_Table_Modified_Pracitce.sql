@@ -1,7 +1,6 @@
 -- 11-02-2026  Day-01
 
 use joins23;
-
 SELECT * FROM joins23.german_credit_risk;
 
 alter table german_credit_risk rename column `Credit amount` to Credit_amount;
@@ -52,3 +51,23 @@ alter table  german_credit_risk modify Checking_Accounts varchar(20);
 
 alter table german_credit_risk modify Purpose varchar(10);
 desc german_credit_risk;
+
+select* from german_credit_risk;
+# total customer
+select count(*) from german_credit_risk;
+
+# Total feamle
+select count(*) from german_credit_risk where gender = "Female";
+
+# Total male
+select count(*) from german_credit_risk where gender = "male";
+
+
+# Total Credit Amount
+select sum(credit_amount) from german_credit_risk ;
+
+# Total Credit Amount by male 
+select sum(credit_amount) from german_credit_risk  where gender = "male";
+
+# Total Credit Amount by female
+select sum(credit_amount) from german_credit_risk where gender = "female" ;
