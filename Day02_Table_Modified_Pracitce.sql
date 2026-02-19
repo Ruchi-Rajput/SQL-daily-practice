@@ -52,8 +52,6 @@ alter table  german_credit_risk modify Checking_Accounts varchar(20);
 alter table german_credit_risk modify Purpose varchar(10);
 desc german_credit_risk;
 
-
--- Date 19-02-2026 
 select* from german_credit_risk;
 # total customer
 select count(*) from german_credit_risk;
@@ -73,3 +71,11 @@ select sum(credit_amount) from german_credit_risk  where gender = "male";
 
 # Total Credit Amount by female
 select sum(credit_amount) from german_credit_risk where gender = "female" ;
+
+
+select sum(credit_amount) from german_credit_risk where Purpose = "business" ;
+
+
+select sum(credit_amount) from german_credit_risk where gender = "female" ;
+
+select* from german_credit_risk;
