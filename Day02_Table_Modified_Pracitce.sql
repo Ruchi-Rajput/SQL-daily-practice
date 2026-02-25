@@ -72,9 +72,7 @@ select sum(credit_amount) from german_credit_risk  where gender = "male";
 # Total Credit Amount by female
 select sum(credit_amount) from german_credit_risk where gender = "female" ;
 
-
 select sum(credit_amount) from german_credit_risk where Purpose = "business" ;
-
 
 select sum(credit_amount) from german_credit_risk where gender = "female" ;
 

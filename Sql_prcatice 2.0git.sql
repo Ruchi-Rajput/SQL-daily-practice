@@ -27,3 +27,11 @@ select * from customers_a join orders_a using (customer_id) where amount between
 
 -- 8 Find all customers who have never placed an order, sorted by customer name.
 select *  from customers_a left join orders_a using(customer_id) where order_id is null order by customer_name;
+
+# SET - 2  MULTI JOINS 
+-- Question 1 Find the names of sailors who have reserved boat 103?
+select s.sid, s.sname, r.bid from sailors s join reserves r using (sid) where r.bid = 103;   #3
+
+-- Question 2 Find the colors of boats reserved byLubber?
+select  b.color, s.sname, r.bid  from sailors s join reserves r using(sid) join boats b using (bid) where sname = "lubber";
+
