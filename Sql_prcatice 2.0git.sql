@@ -35,3 +35,26 @@ select s.sid, s.sname, r.bid from sailors s join reserves r using (sid) where r.
 -- Question 2 Find the colors of boats reserved byLubber?
 select  b.color, s.sname, r.bid  from sailors s join reserves r using(sid) join boats b using (bid) where sname = "lubber";
 
+-- Question 3 Find the names of sailors who have reserved a red or a green boat?
+select s.sname, s.sid, b.color from sailors s join reserves r using(sid) join boats b using (bid) where b.color in ("red","green"); #8
+
+-- Question 4: Find the names of sailors who have reserved both boat 101 and boat 102.  #5
+select s.sname, r.bid, s.sid  from sailors s join reserves r using(sid) where r.bid in (101, 102);
+
+-- Question 5: Find the names of sailors who have never reserved a red boat.
+select s.sname, b.color, r.bid from sailors s join reserves r using(sid) join boats b using(bid) where b.color not  in ("red"); #5
+
+-- Question 6: Find the sailors who are older than 30 years and have reserved a boat.
+select distinct s.sname, r.bid, s.age from sailors s join reserves r using(sid) where s.age > 30;
+
+-- Question 7: Find the average age of sailors who have reserved a green boat.
+select round(avg(s.age),0) as avg_age from sailors s join reserves r using(sid) join boats b using(bid) where b.color = "green"; #1
+
+-- Question 8: Find the sailor names along with the number of boats they have reserved.
+select s.sid, s.sname, count(r.bid) as total_boat from sailors s join reserves r using(sid) group by s.sid, s.sname;
+
+-- Question 9: List the boat names that have never been reserved.
+select b.bid, bname from boats b left join reserves r using(bid) where b.bid is null ;
+
+
+
