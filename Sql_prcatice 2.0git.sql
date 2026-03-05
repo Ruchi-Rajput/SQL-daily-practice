@@ -56,5 +56,27 @@ select s.sid, s.sname, count(r.bid) as total_boat from sailors s join reserves r
 -- Question 9: List the boat names that have never been reserved.
 select b.bid, bname from boats b left join reserves r using(bid) where b.bid is null ;
 
+-- Question 10: Find the names of sailors who have reserved at least two different boats on the same day.
+select s.sname, s.sid,  r.day as reserve_count  from sailors s join reserves r using(sid) group by s.sid, r.day
+having count(distinct r.bid) >= 2; 
+
+-- Question 11: Find the sailors who have reserved boats more than three times.
+select s.sid, s.sname, count(r.bid) as boat_reserved from sailors s join reserves r using(sid) group by s.sid,s.sname having count(r.bid) >=3;
+
+-- Question 12: List all sailors and the total number of different days they have made reservations.
+select s.sid, s.sname, count(r.day) count_of_days from sailors s join reserves r using(sid) group by s.sid, s.sname ;
+
+-- Question 13: Find the sailor with the highest rating.
+select * from sailors where rating = (select max(rating) from sailors);
+
+-- Question 14: Find the sailor who is youngest but has reserved a boat.
+select s.sid, s.sname, s.age from sailors s join reserves r using(sid) order by s.age asc limit 1;
+
+-- Question 15: Find the total number of reservations made for each boat.
+select b.bid, count(r.sid) as total_reservation from boats b join reserves r using(bid) group by b.bid;
+
+select * from boats;
+select * from reserves;
+select * from sailors;
 
 
