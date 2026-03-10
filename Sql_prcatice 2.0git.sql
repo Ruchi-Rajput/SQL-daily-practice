@@ -79,4 +79,43 @@ select * from boats;
 select * from reserves;
 select * from sailors;
 
+--  Date:- 10-03-2026 
+use group_db;
+show tables;
+-- 1. 1. Show each customer and the total number of orders they have placed.
+select customer_id, count(o.order_id) as total_order_by_each_cust from customers c 
+join orders o using(customer_id) group by customer_id;
+
+-- 2. 2. Show each customer and their total purchase amount.
+select customer_id, sum(o.total_amount) as total_amount_by_each_cust from customers c 
+join orders o using(customer_id) group by customer_id;
+
+select customer_id, sum(od.quantity*od.unit_price) as total_amount_by_each_cust from customers c 
+join orders o using(customer_id) join order_details od using (order_id) group by customer_id;
+
+-- 3. 3. Count the number of orders placed per country.
+select c.country, count(o.order_id) as total_order_each_country from customers c
+join orders o using(customer_id) group by c.country;
+
+-- 4. 4. Show total sales grouped by country.
+select c.country, sum(od.quantity*od.unit_price) as total_sales_each_country from customers c
+join orders o using(customer_id) join order_details od using(order_id) group by c.country;
+
+-- 5. 5. Find the average order value (AOV) per customer.
+select customer_id, round(avg(o.total_amount),2) as avg_ordervalue_by_each_cust from customers c 
+join orders o using(customer_id) group by customer_id;
+
+-- 6. 6. Show each product and total units sold.
+select p.product_id, p.product_name, sum(od.quantity) as total_unit from products p 
+join order_details od using(product_Id)  group by p.product_id, p.product_name ;
+
+-- 7. 7. Find total revenue generated per product category.
+select p.category, sum(od.quantity*od.unit_price) as total_unit from products p 
+join order_details od using(product_Id)  group by p.category ;
+
+select*from customers;
+select*from orders;
+select*from products;
+select*from order_details;
+
 
