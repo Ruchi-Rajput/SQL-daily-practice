@@ -113,6 +113,11 @@ join order_details od using(product_Id)  group by p.product_id, p.product_name ;
 select p.category, sum(od.quantity*od.unit_price) as total_unit from products p 
 join order_details od using(product_Id)  group by p.category ;
 
+-- 8. 8. Group by month from order_date and show total order count.
+select date_format(order_date,'%Y-%m') as monthh, count(order_id) as total_order_by_month from orders 
+group by monthh;
+
+
 select*from customers;
 select*from orders;
 select*from products;
