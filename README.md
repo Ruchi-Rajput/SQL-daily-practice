@@ -199,3 +199,10 @@ I used **JOIN operations** to combine data from different tables and applied **a
 
 ### Learning Outcome
 This practice helped me understand how SQL is used to analyze business data, calculate sales metrics, and generate insights about customers, products, and regional performance.
+
+
+### New updations:- 
+### 12-03-2026
+### Monthly Order & Sales Analysis
+Analyzed order trends by grouping `order_date` by month to calculate the total number of orders placed each month.  
+Also computed monthly sales revenue using `SUM(total_amount)` to understand overall sales performance over time.
