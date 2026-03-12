@@ -117,6 +117,9 @@ join order_details od using(product_Id)  group by p.category ;
 select date_format(order_date,'%Y-%m') as monthh, count(order_id) as total_order_by_month from orders 
 group by monthh;
 
+-- 9. 9. Show monthly total sales.
+select date_format(order_date,'%Y-%m') as monthh, sum(total_amount) as total_order_by_month from orders 
+group by monthh;
 
 select*from customers;
 select*from orders;
