@@ -126,6 +126,35 @@ select*from orders;
 select*from products;
 select*from order_details;
 
+-- Date:- 17-10-2026
+-- 10. 10. Show each product and its average quantity sold.
+select od.product_id, round(avg(quantity),0) as avg_quantity from products p join order_details od using(product_id) group by od.product_id;
+
+-- 11. 11. Show total revenue per customer grouped by country.
+select c.customer_id, c.country,sum(total_amount) as total_revenue from customers c join orders o using(customer_id) group by c.customer_id, c.country;
+
+
+-- 12. 12. Join customers, orders, order_details, and products to show revenue per category  per country.
+select c.country, p.category , sum(total_amount) as total_revenue from customers c join orders o using(customer_id) join order_details od using (order_id)
+join products p using(product_id) group by c.country, p.category;
+
+-- 13. 13. Show customer name, category, and total revenue.
+select c.customer_name, p.category , sum(total_amount) as total_revenue from customers c join orders o using(customer_id) join order_details od using (order_id)
+join products p using(product_id) group by c.customer_name, p.category;
+
+
+-- 14. 14. Count how many distinct products each customer has purchased.
+select c.customer_id,c.customer_name,  count(distinct p.product_name) as distinct_product from customers c join orders o using(customer_id) join order_details od using (order_id)
+join products p using(product_id) group by c.customer_Id, c.customer_name order by distinct_product desc limit 1; 
+
+-- 15. 15. Show number of orders grouped by city.
+select c.city, count(o.order_id) as total_order from customers c join orders o  using(customer_id) group by c.city;
+
+select*from customers;
+select*from orders;
+select*from products;
+select*from order_details;
+
 
 
 
