@@ -154,7 +154,21 @@ select*from customers;
 select*from orders;
 select*from products;
 select*from order_details;
+-- 16. 16. Show customers whose total revenue exceeds ₹1000. 
+select c.customer_id, c.customer_name, sum(total_amount) as total_revenue from customers c join orders o using(customer_id) group by  c.customer_id, c.customer_name
+having total_revenue > 1000;
 
+-- 17. 17. Show products where total quantity sold &gt; 50.
+select p.product_name, p.product_id, sum(od.quantity) as total_quantity 	from products p join order_details od using(product_id) group by 
+ p.product_name, p.product_id having total_quantity > 50;
 
+-- 18. 18. Show countries whose average order value is above ₹500.
+select c.country, avg(total_amount) as avg_order_revenue from customers c join orders o using(customer_id) group by 
+ c.country having avg_order_revenue > 500;
+ 
+-- 19. 19. Show categories where total revenue &gt; ₹5000.
+select p.category,sum(total_amount) as total_revenue from customers c join orders o using(customer_id) 
+join order_details od using(order_id) join products p using(product_id) group by p.category having total_revenue > 50000;
+;
 
 
