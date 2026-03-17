@@ -206,3 +206,8 @@ This practice helped me understand how SQL is used to analyze business data, cal
 ### Monthly Order & Sales Analysis
 Analyzed order trends by grouping `order_date` by month to calculate the total number of orders placed each month.  
 Also computed monthly sales revenue using `SUM(total_amount)` to understand overall sales performance over time.
+
+### 17-03-2026
+### Advanced Sales & Customer Analysis
+Performed multi-table analysis by joining customers, orders, order_details, and products to evaluate product demand, customer purchasing behavior, and revenue distribution across categories and countries.  
+Used aggregation functions such as `AVG()`, `SUM()`, `COUNT()`, and `DISTINCT` along with `GROUP BY` to generate insights on product performance, customer revenue contribution, and order distribution by location.
