@@ -150,10 +150,7 @@ join products p using(product_id) group by c.customer_Id, c.customer_name order 
 -- 15. 15. Show number of orders grouped by city.
 select c.city, count(o.order_id) as total_order from customers c join orders o  using(customer_id) group by c.city;
 
-select*from customers;
-select*from orders;
-select*from products;
-select*from order_details;
+
 -- 16. 16. Show customers whose total revenue exceeds ₹1000. 
 select c.customer_id, c.customer_name, sum(total_amount) as total_revenue from customers c join orders o using(customer_id) group by  c.customer_id, c.customer_name
 having total_revenue > 1000;
@@ -171,4 +168,10 @@ select p.category,sum(total_amount) as total_revenue from customers c join order
 join order_details od using(order_id) join products p using(product_id) group by p.category having total_revenue > 50000;
 ;
 
-
+-- 20. 20. Find months where order count &gt; 10.
+select date_format(order_date,'%Y-%m') as monthh , count(order_id) as total_order_count from orders  group by monthh having total_order_count
+> 10;
+select*from customers;
+select*from orders;
+select*from products;
+select*from order_details;
