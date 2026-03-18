@@ -211,3 +211,8 @@ Also computed monthly sales revenue using `SUM(total_amount)` to understand over
 ### Advanced Sales & Customer Analysis
 Performed multi-table analysis by joining customers, orders, order_details, and products to evaluate product demand, customer purchasing behavior, and revenue distribution across categories and countries.  
 Used aggregation functions such as `AVG()`, `SUM()`, `COUNT()`, and `DISTINCT` along with `GROUP BY` to generate insights on product performance, customer revenue contribution, and order distribution by location.
+
+## Date - 18-03-2026
+### Customer Analysis Using Subqueries
+Performed customer-level analysis using subqueries to identify high-value customers based on credit limits and compare them with overall averages.  
+Also analyzed customer activity by retrieving customers who have placed orders using JOIN and IN conditions.
