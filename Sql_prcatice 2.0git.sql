@@ -175,3 +175,25 @@ select*from customers;
 select*from orders;
 select*from products;
 select*from order_details;
+
+-- Date: 18-03-2026
+
+use dumy;
+show tables;
+select*from orderdetails;
+select *from orders;
+select*from payments;
+select* from employees;
+select*from customers;
+select*from products;
+select*from productlines;
+ 
+-- 1 Retrieve the customers whose creditLimit is above the average credit limit of all customers.
+ select *from customers where creditlimit > (select avg(creditlimit) from customers);
+ 
+--  2️ Find the customer(s) with the highest credit limit using a subquery.
+ select *from customers where creditlimit = (select max(creditlimit) from customers);
+
+-- 3 Get the customers who have placed at least one order (assuming orders table has a customerNumber foreign key).
+select * from customers c JOIN orders o ON c.customernumber = o.customernumber;
+select * from customers where customernumber in (Select customernumber from orders);
