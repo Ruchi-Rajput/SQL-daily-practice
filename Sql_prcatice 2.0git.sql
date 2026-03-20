@@ -197,3 +197,11 @@ select*from productlines;
 -- 3 Get the customers who have placed at least one order (assuming orders table has a customerNumber foreign key).
 select * from customers c JOIN orders o ON c.customernumber = o.customernumber;
 select * from customers where customernumber in (Select customernumber from orders);
+
+-- 4 Find the customers who haven't made any payments (assuming payments table exists).
+select * from customers c  left  JOIN payments p ON c.customernumber = p.customernumber
+where p.customernumber is null;
+select * from customers where customernumber not in (select customernumber from  payments);
+
+-- 5 Get the customers whose credit limit is higher than any customer's credit limit from "New York".
+select customername from customers where creditlimit > (select max(creditlimit) from customers where country = 'usa');
