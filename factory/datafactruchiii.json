@@ -1,0 +1,9 @@
+{
+	"name": "datafactruchiii",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b20b586d-ec72-447a-a25f-ca70462da8b4",
+		"tenantId": "fe5a834a-231a-41a1-afe6-4c7c72ac8ec1"
+	}
+}
