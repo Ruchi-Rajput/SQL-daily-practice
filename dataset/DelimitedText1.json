@@ -1,0 +1,29 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "customers.xlsx",
+				"container": "fileinblob"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PK\u0003\u0004\u0014\u0000\b\b\b\u0000�%e\\\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0018\u0000\u0000\u0000xl/drawings/drawing1.xml��]n�0\f\u0007�\u0013�\u000eU�iZ\u0018\u0013C\u0014^�N0\u000e�%n\u001b���\u000e��~�J6i{\u0001\u001em�?���nt��Db\u0013|#�\u0012\u0005z\u0015��]#\u000e�o��(8��`��F\\��n��\u00195�ϼ�\"�{^��\u0011}��ZJV=:�2\f�Ӵ",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
