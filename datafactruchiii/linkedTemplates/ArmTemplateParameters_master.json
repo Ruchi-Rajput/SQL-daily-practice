@@ -1,0 +1,60 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "datafactruchiii"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage3_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase3_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "ruchiserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "ruchidb"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "ruchiadmin"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_server": {
+			"value": "ruchiserver.database.windows.net"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_database": {
+			"value": "ruchidb"
+		},
+		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"value": "ruchiadmin"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_server": {
+			"value": "ruchiserver.database.windows.net"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_database": {
+			"value": "ruchidb"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_userName": {
+			"value": "ruchiadmin"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
