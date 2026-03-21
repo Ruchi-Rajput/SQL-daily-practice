@@ -14,6 +14,9 @@
 		"AzureBlobStorage3_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorage4_connectionString": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
@@ -21,6 +24,9 @@
 			"value": ""
 		},
 		"AzureSqlDatabase3_password": {
+			"value": ""
+		},
+		"AzureTableStorage1_connectionString": {
 			"value": ""
 		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
