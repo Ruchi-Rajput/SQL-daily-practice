@@ -1,0 +1,48 @@
+{
+	"name": "DelimitedText4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "admissions.csv",
+				"container": "file2inblob"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "admission_id",
+				"type": "String"
+			},
+			{
+				"name": "patient_id",
+				"type": "String"
+			},
+			{
+				"name": "doctor_id",
+				"type": "String"
+			},
+			{
+				"name": "admission_date",
+				"type": "String"
+			},
+			{
+				"name": "discharge_date",
+				"type": "String"
+			},
+			{
+				"name": "readmitted_within_30_days",
+				"type": "String"
+			}
+		]
+	}
+}
