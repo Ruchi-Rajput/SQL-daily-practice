@@ -1,0 +1,25 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"description": "wqreewr",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "blobtotable",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2026-03-21T16:36:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
