@@ -205,3 +205,37 @@ select * from customers where customernumber not in (select customernumber from 
 
 -- 5 Get the customers whose credit limit is higher than any customer's credit limit from "New York".
 select customername from customers where creditlimit > (select max(creditlimit) from customers where country = 'usa');
+
+
+-- 6 Find the customer(s) who placed the most orders.
+select c.customername, count(c.customerNumber) as count_orders FROM  customers c  
+JOIN orders o  ON c.customerNumber = o.customernumber group by c.customername order by count_orders desc limit 1;
+
+-- class solution 
+select customername from customers 
+where customernumber IN (select customernumber from orders
+group by customernumber
+having COUNT(*) = (SELECT MAX(order_count) FROM
+(SELECT COUNT(*) AS order_count
+FROM orders group by customernumber) AS counts));
+
+select c.customername from customers c 
+JOIN orders o ON c.customernumber = o.customernumber group by customername
+HAVING o.customernumber = (select count(o.customernumber) from orders group by c.customername); 
+
+-- 7 Retrieve customers who have never placed an order.
+select c.customername , c.customernumber from customers c 
+LEFT JOIN orders o ON c.customernumber = o.customernumber where o.customernumber is null;
+
+select customername,customernumber from customers  where customernumber 
+not in (select customernumber from orders );
+
+-- 8 Find customers who have placed orders but have never made a payment.
+SELECT c.customernumber,c.customername from  orders o
+JOIN  customers c ON C.customernumber = o.customernumber 
+LEFT JOIN payments p ON o.customernumber = p.customernumber
+where p.customernumber is null;
+
+SELECT	c.customernumber, c.customername from  orders o 
+JOIN customers c ON o.customernumber = c.customernumber where c.customernumber
+not in (select customernumber from payments);
