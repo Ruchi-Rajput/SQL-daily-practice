@@ -166,7 +166,6 @@ select c.country, avg(total_amount) as avg_order_revenue from customers c join o
 -- 19. 19. Show categories where total revenue &gt; ₹5000.
 select p.category,sum(total_amount) as total_revenue from customers c join orders o using(customer_id) 
 join order_details od using(order_id) join products p using(product_id) group by p.category having total_revenue > 50000;
-;
 
 -- 20. 20. Find months where order count &gt; 10.
 select date_format(order_date,'%Y-%m') as monthh , count(order_id) as total_order_count from orders  group by monthh having total_order_count
@@ -209,7 +208,7 @@ select customername from customers where creditlimit > (select max(creditlimit) 
 
 -- 6 Find the customer(s) who placed the most orders.
 select c.customername, count(c.customerNumber) as count_orders FROM  customers c  
-JOIN orders o  ON c.customerNumber = o.customernumber group by c.customername order by count_orders desc limit 1;
+JOIN orders o ON c.customerNumber = o.customernumber group by c.customername order by count_orders desc limit 1;
 
 -- class solution 
 select customername from customers 
@@ -239,3 +238,20 @@ where p.customernumber is null;
 SELECT	c.customernumber, c.customername from  orders o 
 JOIN customers c ON o.customernumber = c.customernumber where c.customernumber
 not in (select customernumber from payments);
+
+-- 9 Get the customers who made the highest total payment.
+select customernumber, customername, amount from customers join payments using(customernumber) where amount = (select max(amount) from payments);
+
+-- 10 Find products that have never been ordered.
+select * from products where productcode not in (select productcode from orderdetails);
+
+select * from products where productcode in (select productcode from orderdetails);
+select count(*) from products;
+
+-- 11 Retrieve the most expensive product(s).
+select * from products where msrp = (select max(msrp) from products);
+select * from products order by msrp desc limit 1;
+
+-- 12 Retrieve the total revenue from each product category and list only categories where revenue is above the average revenue.
+select p.productline, sum(od.quantityOrdered*od.priceeach) as total_revene, avg(od.quantityOrdered*od.priceeach)  from products p join orderdetails od using(productcode)
+group by p.productline having total_revene > avg(od.quantityOrdered*od.priceeach) ;
