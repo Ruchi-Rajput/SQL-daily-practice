@@ -255,3 +255,37 @@ select * from products order by msrp desc limit 1;
 -- 12 Retrieve the total revenue from each product category and list only categories where revenue is above the average revenue.
 select p.productline, sum(od.quantityOrdered*od.priceeach) as total_revene, avg(od.quantityOrdered*od.priceeach)  from products p join orderdetails od using(productcode)
 group by p.productline having total_revene > avg(od.quantityOrdered*od.priceeach) ;
+
+
+use window_function;
+show tables;
+
+-- 1. Rank sales reps by their total sales within each month.
+-- (Use RANK() function with PARTITION BY month)
+select sales_rep, sales_amount, month, rank() over (partition by month order by sales_amount desc) as sales_ranking from sales_data;
+select * from sales_data;
+
+-- 2. Show the cumulative (running) total of sales for each sales rep across months.
+-- (Use SUM() as a window function ordered by month)
+select sales_rep, sales_amount, month, sum(sales_amount) over(partition by sales_rep order by sales_amount desc) as cumulative_sales from sales_data;
+
+-- 3. Find the average monthly sales amount for each region.
+-- (Use AVG() with PARTITION BY region)
+select sales_rep, sales_amount, month, region, avg(sales_amount) over(partition by region,month) as average_monthly from sales_data;
+
+-- 4. Compare each month’s sales amount with the previous month's sales for each sales rep.
+-- (Use LAG() window function)
+select sales_rep, month, sales_amount, lag(sales_amount) over(partition by sales_rep) previous_comparion from sales_data;
+
+# Sales different 
+select sales_rep, month, sales_amount, lag(sales_amount) over(partition by sales_rep) previous_month_sales,
+sales_amount- lag(sales_amount) over(partition by sales_rep) as sales_diff from sales_data;
+
+
+-- 5. Find the sales amount of the next month for each sales rep.
+-- (Use LEAD() window function)
+select sales_rep, month, sales_amount, lead(sales_amount) over(partition by sales_rep) next_month from sales_data;
+
+
+
+
