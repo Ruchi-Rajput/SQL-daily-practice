@@ -286,12 +286,24 @@ sales_amount- lag(sales_amount) over(partition by sales_rep) as sales_diff from 
 -- (Use LEAD() window function)
 select sales_rep, month, sales_amount, lead(sales_amount) over(partition by sales_rep) next_month from sales_data;
 
--- �� Intermediate Level Questions
+-- 🦅🦅 Intermediate Level Questions
 -- 6. Find what percentage of the total regional sales is contributed by each record.
 -- (Use SUM() in denominator and compute percentage)
--- 7. For each sales rep, find their highest monthly sales amount (and display it
--- alongside each row).
+#class
+select sales_rep, region,month,sales_amount, sales_amount *100/ sum(sales_amount) 
+over(partition by sales_rep) as percentage from sales_data;
+
+# formated
+select sales_rep, region, month, sales_amount, round(sales_amount *100/ sum(sales_amount) 
+over(partition by sales_rep),2) as percentage from sales_data;
+
+select*from sales_data;
+-- 7. For each sales rep, find their highest monthly sales amount (and display it alongside each row).
 -- (Use MAX() as window function)
+select sales_rep, month,sales_amount, 
+MAX(sales_amount) over(partition by sales_rep order by sales_amount desc ) as Highest_Monthly_sales
+from sales_data;
+
 -- 8. Check whether each sales rep’s sales increased or not compared to their previous
 -- month.
 -- (Use LAG() with CASE WHEN logic)
